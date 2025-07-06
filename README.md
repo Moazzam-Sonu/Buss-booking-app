@@ -1,97 +1,112 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+### **Frontend Repo (Buss-Booking-App) - `README.md`**  
+```markdown
+# 🚌 Bus Booking App (React Native)  
 
-## Step 1: Start Metro
+A mobile app for booking bus tickets in Pakistan, built with **React Native** for Android.  
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ✨ Features  
+- Google & Phone Number Authentication  
+- Search buses by route (Karachi-Islamabad, Lahore, etc.)  
+- Seat selection & ticket booking  
+- Past bookings history  
+- Responsive UI  
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 📸 Screenshots  
+| Sign In | Bus Search | Ticket Booking |  
+|---------|------------|----------------|  
+![img1](https://github.com/user-attachments/assets/d6b39ca8-b965-406f-82b2-7e5e4ceeb254)
+![img2](https://github.com/user-attachments/assets/595b5572-de5b-4039-8e43-51d28ca78731)
+![img3](https://github.com/user-attachments/assets/f715d719-f164-4aea-861e-1e30e86f750b)
+![img4](https://github.com/user-attachments/assets/0346b9ae-845b-4030-9a2a-2555bc3838f9)
+![img5](https://github.com/user-attachments/assets/a52ae800-c800-41dd-86ea-098a8303204e)
+![img6](https://github.com/user-attachments/assets/346aed08-364b-4442-b6c0-9137c0e1980f)
+## 🛠️
 
-```sh
-# Using npm
-npm start
+Tech Stack  
+- **Frontend**: React Native, Expo (optional)  
+- **State Management**: Context API / Redux  
+- **Styling**: React Native Stylesheet  
+- **Backend**: [Node.js API](https://github.com/Moazzam-Sonu/Bus-Booking-Backend)  
 
-# OR using Yarn
-yarn start
+## 🔧 Setup  
+1. Clone the repo:  
+   ```bash
+   git clone https://github.com/Moazzam-Sonu/Buss-Booking-App.git
+   cd Buss-Booking-App
+   ```
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
+3. Run the app (Android):  
+   ```bash
+   npx react-native run-android
+   ```
+
+## 📌 Notes  
+- Backend must be running for full functionality.  
+
+## 🤝 Credits  
+- UI Inspiration: [Ritik Prasad]
+- Admin Panel: AdminJS  
+
+---
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### **Backend Repo (Bus-Booking-Backend) - `README.md`**  
+```markdown
+# 🚍 Bus Booking Backend (Node.js)  
 
-### Android
+A RESTful API for the Bus Booking App, built with **Node.js**, **Express**, and **MongoDB**.  
 
-```sh
-# Using npm
-npm run android
+## 🔥 Features  
+- JWT Authentication (Google & Phone OTP)  
+- CRUD for Buses, Routes, Tickets  
+- Admin Dashboard (AdminJS)  
+- PNR & Ticket Generation  
 
-# OR using Yarn
-yarn android
-```
+## 📊 Database Schema  
+- **Users**: `{ phone, email, name, bookings: [] }`  
+- **Buses**: `{ busId, name, type (AC/Non-AC), seats, route, timings }`  
+- **Tickets**: `{ PNR, userId, busId, seats, amount, status }`  
 
-### iOS
+## 🛠️ Tech Stack  
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB (Mongoose)  
+- **Admin Panel**: AdminJS  
+- **Auth**: Firebase (Google), Twilio (OTP)  
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 🚀 Setup  
+1. Clone the repo:  
+   ```bash
+   git clone https://github.com/Moazzam-Sonu/Bus-Booking-Backend.git
+   cd Bus-Booking-Backend
+   ```
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
+3. Configure environment variables (`.env`):  
+   ```env
+   MONGODB_URI=your_mongo_uri
+   FIREBASE_API_KEY=your_firebase_key
+   TWILIO_SID=your_twilio_sid
+   JWT_SECRET=your_jwt_secret
+   ```
+4. Start the server:  
+   ```bash
+   npm start
+   ```
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## 📌 API Endpoints  
+| Method | Endpoint          | Description            |  
+|--------|-------------------|------------------------|  
+| POST   | `/api/auth/google` | Google Login           |  
+| POST   | `/api/auth/otp`    | Send/Verify OTP        |  
+| GET    | `/api/buses`       | Search Buses           |  
+| POST   | `/api/tickets`     | Book Ticket            |  
 
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
